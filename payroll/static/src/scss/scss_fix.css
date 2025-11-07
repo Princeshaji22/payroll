@@ -1,0 +1,4 @@
+/* Prevent ghost monetary value from overlapping input */
+.o_monetary_ghost_value.opacity-0 {
+    display: none !important; /* removes it completely when hidden */
+}

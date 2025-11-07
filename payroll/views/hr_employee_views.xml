@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Employee View -->
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.payroll</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="%(hr_payslip_action_employee)d"
+                    class="oe_stat_button"
+                    icon="fa-money"
+                    type="action"
+                    groups="payroll.group_payroll_user"
+                >
+                    <field name="payslip_count" widget="statinfo" string="Payslips" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="view_hr_employee_form_inherit_sif" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.sif</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!--<field name="work_location_id" position="after">
+                <field name="mol_id"/>
+            </field>-->
+           <!-- <xpath expr="//group/group/field[@name='category_ids']" position="after">
+                  <field name="mol_id"/>
+            </xpath>-->
+           <page name="hr_settings" position="before">
+                <page string="Bank Accounts">
+                    <field name="bank_account_ids" nolabel="1">
+                        <list editable="bottom">
+                            <field name="acc_number" string="Account Number"/>
+                            <field name="partner_id"/>
+                            <field name="acc_holder_name" string="Account Holder"/>
+                            <field name="bank_name" string="Bank"/>
+                            <field name="bank_bic" string="Bank Code"/>
+                            <field name="acc_type" string="Account Type"/>
+                            <field name="branch_name" string="Branch"/>
+                            <field name="iban" string="IBAN"/>
+                            <field name="routing_code" string="Routing Code"/>
+                            <field name="is_default" string="Default Bank Account"/>
+                        </list>
+                    </field>
+                </page>
+           </page>
+        </field>
+    </record>
+</odoo>
